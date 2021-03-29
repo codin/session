@@ -1,0 +1,11 @@
+parameters:
+    level: max
+    paths:
+        - %currentWorkingDirectory%/src
+    bootstrapFiles:
+        - %currentWorkingDirectory%/vendor/autoload.php
+    inferPrivatePropertyTypeFromConstructor: true
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#PHPDoc tag#'

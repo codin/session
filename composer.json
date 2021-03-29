@@ -1,0 +1,47 @@
+{
+    "name": "codin/session",
+    "description": "Session wrapper",
+    "license": "GPL-3.0",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kieron",
+            "homepage": "http://madebykieron.co.uk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "psr/http-message": "^1.0",
+        "psr/http-server-middleware": "^1.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "@stable",
+        "friendsofphp/php-cs-fixer": "@stable",
+        "phpstan/phpstan": "@stable"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codin\\Session\\": "src/"
+        }
+    },
+    "suggest": {
+        "league/flysystem": "File system session storage",
+        "ext-redis": "Redis session storage"
+    },
+    "scripts": {
+        "psr": [
+            "./bin/php-cs-fixer fix src/ --allow-risky=yes --rules=@PSR2,no_unused_imports,ordered_imports,ordered_interfaces,single_quote,trailing_comma_in_multiline_array"
+        ],
+        "uninstall": [
+            "rm -rf ./bin",
+            "rm -rf ./vendor",
+            "rm ./composer.lock"
+        ]
+    }
+}
