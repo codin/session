@@ -2,3 +2,4 @@
 /bin
 *.phar
 *.log
+*.cache
