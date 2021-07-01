@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Codin\Session\Storage;
 
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\Filesystem;
 
 class FlysystemStorage implements StorageInterface
 {
@@ -14,7 +14,7 @@ class FlysystemStorage implements StorageInterface
 
     protected $expire;
 
-    public function __construct(FilesystemInterface $fs, int $expire = 3600)
+    public function __construct(Filesystem $fs, int $expire = 3600)
     {
         $this->fs = $fs;
         $this->expire = $expire;
@@ -55,7 +55,7 @@ class FlysystemStorage implements StorageInterface
     public function exists(string $id): bool
     {
         $file = $this->filename($id);
-        return $this->fs->has($file) && !$this->expired($this->fs->getTimestamp($file));
+        return $this->fs->fileExists($file) && !$this->expired($this->fs->lastModified($file));
     }
 
     public function write(string $id, array $data): bool
